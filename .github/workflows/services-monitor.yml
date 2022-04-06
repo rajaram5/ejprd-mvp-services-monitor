@@ -3,15 +3,14 @@ name: MVP services monitor
 
 on:
   schedule:
-    # Runs "at minute 30 past every hour" (see https://crontab.guru)
-    - cron: '30 * * * *'
+    # Runs "at minute 55 past every hour" (see https://crontab.guru)
+    - cron: '55 * * * *'
 jobs:
   build:
     name: Check QB API
     runs-on: ubuntu-latest
     steps:
-      - name: cURL request
-        # Hit the webhook endpoint to rebuild  from the "main" branch
+      - name: Request to check cellosaurus QB API
         run: |
           CODE=`curl --head -X GET "https://ejp-rd-dev1.vm.cesnet.cz/grlcs/cellosaurus?code=http%3A%2F%2Fwww.orpha.net%2FORDO%2FOrphanet_558" -H "accept: application/json"`
           if [ $CODE!="200" ]
