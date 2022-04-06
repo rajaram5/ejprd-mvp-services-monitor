@@ -7,7 +7,7 @@ on:
     - cron: '30 * * * *'
 jobs:
   build:
-    name: Check cellosaurus QB API
+    name: Check QB API
     runs-on: ubuntu-latest
     steps:
       - name: cURL request
