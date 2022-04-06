@@ -1,0 +1,20 @@
+# Workflow to monitor MVP services
+name: MVP services monitor manual trigger
+
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Check cellosaurus QB API
+    runs-on: ubuntu-latest
+    steps:
+      - name: cURL request
+        # Hit the webhook endpoint to rebuild  from the "main" branch
+        run: |
+          CODE=`curl --head -X GET "https://ejp-rd-dev1.vm.cesnet.cz/grlcs/cellosaurus?code=http%3A%2F%2Fwww.orpha.net%2FORDO%2FOrphanet_558" -H "accept: application/json"`
+          if [ $CODE!="200" ]
+          then
+              echo "FAILURE"
+          else
+              echo "SUCCESS"
+          fi
