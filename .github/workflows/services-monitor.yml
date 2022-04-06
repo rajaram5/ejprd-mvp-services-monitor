@@ -4,7 +4,7 @@ name: MVP services monitor
 on:
   schedule:
     # Runs "at minute 55 past every hour" (see https://crontab.guru)
-    - cron: '55 * * * *'
+    - cron: '0 11,23 * * *'
 jobs:
   build:
     name: Check QB API
